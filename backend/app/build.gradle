@@ -5,9 +5,22 @@
  * For more details on building Java & JVM projects, please refer to https://docs.gradle.org/9.7.1/userguide/building_java_projects.html in the Gradle documentation.
  */
 
+       
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
+    id 'maven-publish'
+}
+
+group = 'com.example'  //darle nombre
+version = '1.0.0'  
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
 }
 
 repositories {

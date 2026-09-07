@@ -8,4 +8,12 @@
             30
         </session-timeout>
     </session-config>
+
+    <!-- Al entrar a la raíz de la app ("/", ej. http://localhost:8085/ProyectoBases/),
+         Tomcat sirve primero "empleados", que es la ruta del
+         ListarEmpleadosServlet. Este carga los datos y hace forward a
+         index.jsp, asegurando que el grid siempre llegue con datos. -->
+    <welcome-file-list>
+        <welcome-file>empleados</welcome-file>
+    </welcome-file-list>
 </web-app>

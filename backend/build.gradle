@@ -1,0 +1,58 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+group = 'com.tuempresa'
+version = '1.0.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+        // Nota: si NetBeans/Gradle aún no reconocen el toolchain de
+        // Java 26 (por ser una versión muy reciente), usa 21 (LTS)
+        // como mínimo compatible y ajusta a 26 cuando el soporte de
+        // tu toolchain de Gradle lo permita.
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Driver JDBC oficial de Microsoft para SQL Server.
+    // Se declara como "api" (no "implementation") a propósito: el
+    // proyecto Maven (ProyectoBases) que consume este .jar necesita
+    // ver esta dependencia de forma transitiva, ya que EmpleadoDAOImpl
+    // usa tipos de este driver internamente. Con "implementation" esa
+    // dependencia quedaría oculta y ProyectoBases no la resolvería
+    // automáticamente al publicarse el .pom.
+    api 'com.microsoft.sqlserver:mssql-jdbc:12.8.1.jre11'
+
+    // JUnit 5 para pruebas unitarias (opcional, recomendado)
+    testImplementation platform('org.junit:junit-bom:5.10.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+// Publica este proyecto como artefacto Maven en el repositorio local
+// (~/.m2/repository), para que ProyectoBases (Maven) pueda declararlo
+// como una dependencia normal en su pom.xml, exactamente igual que
+// cualquier librería de Maven Central.
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            groupId = project.group
+            artifactId = 'backend'
+            version = project.version
+        }
+    }
+    repositories {
+        mavenLocal()
+    }
+}
