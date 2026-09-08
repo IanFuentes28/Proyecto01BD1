@@ -6,7 +6,7 @@ import java.math.BigDecimal;
  // es un registro de la tabla dbo.Empleado.
  
  //Es un objeto plano sin lógica de negocio ni de acceso a datos.
- //hace DAO a Service a UI).
+ //hace DAO a Service a UI
  
  //Se usa BigDecimal para el salario porque el SQL Server MONEY pide precisión monetaria exacta
 
