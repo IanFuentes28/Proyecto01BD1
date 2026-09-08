@@ -15,28 +15,25 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Implementación JDBC de EmpleadoDAO contra SQL Server.
- *
- * Responsabilidades de esta clase:
- *  - Construir y ejecutar sentencias SQL / llamadas a stored procedures.
- *  - Mapear ResultSet -> objetos Empleado.
- *  - Traducir SQLException a las excepciones de dominio del proyecto
+
+ //Implementación JDBC de EmpleadoDAO contra SQL Server.
+ /**
+ * esta clase se encarga de:
+ *  -construir y ejecutar sentencias SQL / llamadas a stored procedures
+ *  -mapear ResultSet a los objetos Empleado.
+ *  -traducir SQLException a las excepciones de dominio
  *    (DataAccessException / EmpleadoValidationException), de forma que
  *    ninguna capa superior necesite conocer java.sql.SQLException.
- *
- * Esta clase NO valida reglas de negocio (eso ya lo hace el stored
- * procedure sp_InsertarEmpleado en la base de datos, según lo acordado
- * en el diseño del proyecto). Su única labor es la mecánica de
- * comunicación con la BD.
  */
+
+//tampoco valida cosas, las validaciones quedaron en ui y bd
 public class EmpleadoDAOImpl implements EmpleadoDAO {
 
     /**
-     * Código de error nativo que SQL Server asocia al THROW 51000
+     * THROW 51000 es un codigo de error que sql asocia a este y que es
      * lanzado manualmente en sp_InsertarEmpleado cuando el nombre del
-     * empleado ya existe. Se usa para distinguir errores de negocio
-     * de errores técnicos genéricos de SQL.
+     * empleado ya esta. Se usa para distinguir errores de negocio
+     * de errores técnicos.
      */
     private static final int SQL_ERROR_CODE_NOMBRE_DUPLICADO = 51000;
 

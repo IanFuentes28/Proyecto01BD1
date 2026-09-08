@@ -15,9 +15,8 @@ public interface EmpleadoDAO {
     List<Empleado> listarTodosOrdenadosPorNombre();
 
     
-     //Invoca el stored procedure sp_InsertarEmpleado para intentar insertar un nuevo empleado.
-     //@param nombre  nombre del empleado a insertar
-     //@param salario salario del empleado a insertar
+     //Invoca el stored procedure sp_InsertarEmpleado para intentar insertar un nuevo empleado
+     // recibe los parametros delegados de service, nombre y salario
      
     void insertar(String nombre, BigDecimal salario);
 }

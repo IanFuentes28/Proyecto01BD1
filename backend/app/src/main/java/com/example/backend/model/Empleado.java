@@ -2,18 +2,14 @@ package com.example.backend.model;
 
 import java.math.BigDecimal;
 
-/**
- * Representa un registro de la tabla dbo.Empleado.
- *
- * Es un objeto plano (POJO): no contiene lógica de negocio ni de acceso
- * a datos. Su única responsabilidad es transportar los datos de un
- * empleado entre las distintas capas de la aplicación (DAO -> Service -> UI).
- *
- * Se usa BigDecimal para el salario (y no double/float) porque el tipo
- * SQL Server MONEY exige precisión monetaria exacta; los tipos de punto
- * flotante binario pueden introducir errores de redondeo inaceptables
- * en contextos monetarios.
- */
+
+ // es un registro de la tabla dbo.Empleado.
+ 
+ //Es un objeto plano sin lógica de negocio ni de acceso a datos.
+ //hace DAO a Service a UI).
+ 
+ //Se usa BigDecimal para el salario porque el SQL Server MONEY pide precisión monetaria exacta
+
 public class Empleado {
 
     private Integer id;
@@ -22,18 +18,18 @@ public class Empleado {
 
     public Empleado() {
     }
-
+    //constructor
     public Empleado(String nombre, BigDecimal salario) {
         this.nombre = nombre;
         this.salario = salario;
     }
-
+    //constructor para la BD
     public Empleado(Integer id, String nombre, BigDecimal salario) {
         this.id = id;
         this.nombre = nombre;
         this.salario = salario;
     }
-
+    //gets y sets
     public Integer getId() {
         return id;
     }

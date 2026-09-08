@@ -8,7 +8,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 
- //Única responsable de abrir conexiones JDBC hacia SQL Server.
+ //abre conexiones JDBC hacia SQL Server.
  //para el manejo de errores
 
 public final class ConnectionFactory {
@@ -19,9 +19,9 @@ public final class ConnectionFactory {
 
 
     //Abre una nueva conexión a la base de datos configurada en database.properties
-    //El caller es responsable de cerrar la conexión (ojala mediante try-with-resources)
-    //@return una nueva Connection lista para usarse
-    //@throws DataAccessException si la conexión no puede establecerse
+    //El caller es responsable de cerrar la conexión y ojala mediante try-with-resources
+    //devuelve una nueva Connection lista para usarse
+    //DataAccessException si la conexión no puede establecerse
     public static Connection getConnection() {
         try {
             return DriverManager.getConnection(

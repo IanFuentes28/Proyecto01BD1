@@ -5,11 +5,11 @@ import java.io.InputStream;
 import java.util.Properties;
 
 
- //Responsable exclusivamente de leer y exponer los parámetros de la conexión a la base de datos.
+ //Solo lee y expone los parámetros de la conexión a la base de datos.
  
  //valores se leen de un archivo database.properties ubicado en el classpath (src/main/resources).
  //hay que mantener las credenciales fuera del código fuente permite cambiarlas sin recompilar y evita subirlas por accidnete
- //IMPORTANTE el .properties se excluye vía .gitignore.
+ //IMPORTANTE el .properties se excluye en .gitignore.
     //no abre conexiones, solo lee configuración.
  
 public final class DatabaseConfig {
@@ -26,7 +26,7 @@ public final class DatabaseConfig {
             if (input == null) {
                 throw new IllegalStateException(
                         "No se encontró el archivo de configuración '" + CONFIG_FILE
-                        + "' en el classpath (se esperaba en src/main/resources)."
+                        + "' en el classpath(se esperaba en src/main/resources)"
                 );
             }
             PROPERTIES.load(input);
@@ -62,11 +62,10 @@ public final class DatabaseConfig {
         return getRequiredProperty("db.password");
     }
 
-    /**
-     * Construye la URL JDBC completa para SQL Server a partir de las
-     * propiedades individuales. Centralizar esto aquí evita construir
-     * la URL manualmente en varios lugares del código.
-     */
+    
+     //Construye la URL JDBC completa para SQL Server a partir de las
+     //propiedades individuales. Centralizar esto aquí para no duplicar la URL después
+   
     public static String buildConnectionUrl() {
         return "jdbc:sqlserver://" + getHost() + ":" + getPort()
                 + ";databaseName=" + getDatabaseName()
