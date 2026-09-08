@@ -10,10 +10,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jakartaee>10.0.0</jakartaee>
-        <!-- Java 21 LTS: versión estable más reciente ampliamente
-             soportada por Tomcat 11 y el ecosistema Maven/NetBeans hoy.
-             Java 26 es demasiado reciente para garantizar soporte
-             completo del maven-compiler-plugin y del propio Tomcat. -->
         <java.version>21</java.version>
     </properties>
     
@@ -25,21 +21,11 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Backend propio: capa de servicio, DAO y modelo de Empleado.
-             Publicado en el repositorio Maven local (~/.m2) mediante
-             'gradle publishToMavenLocal' desde el proyecto backend.
-             Trae consigo (transitivamente) el driver JDBC de SQL Server,
-             ya que el backend lo declara como dependencia "api". -->
+        <!-- Driver de SQL Server para Java -->
         <dependency>
-            <groupId>com.tuempresa</groupId>
-            <artifactId>backend</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.example</groupId>
-            <artifactId>app</artifactId>
-            <version>1.0.0</version>
-            <type>jar</type>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>12.6.1.jre11</version>
         </dependency>
     </dependencies>
     

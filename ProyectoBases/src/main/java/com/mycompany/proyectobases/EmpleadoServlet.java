@@ -1,8 +1,8 @@
 package com.mycompany.proyectobases;
 
-import com.example.backend.exception.DataAccessException;
-import com.example.backend.exception.EmpleadoValidationException;
-import com.example.backend.service.EmpleadoService;
+import com.tuempresa.backend.exception.DataAccessException;
+import com.tuempresa.backend.exception.EmpleadoValidationException;
+import com.tuempresa.backend.service.EmpleadoService;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
